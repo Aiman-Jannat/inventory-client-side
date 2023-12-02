@@ -89,6 +89,11 @@ const Dashboard = () => {
                         <NavLink to="/dashboard/salesCollection" className={({ isActive}) =>
  isActive ? "text-white text-md underline "  : ""}>Sales Collection</NavLink>
                     </li>
+                    <li className=" flex hover:text-white  gap-3 items-center font-bold mt-5 uppercase">
+                        <FaShop></FaShop>
+                        <NavLink to="/dashboard/saleSummary" className={({ isActive}) =>
+ isActive ? "text-white text-md underline "  : ""}>Sale Summary</NavLink>
+                    </li>
                     
                     
                    

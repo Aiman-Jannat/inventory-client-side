@@ -8,6 +8,8 @@ import DatePicker from 'react-datepicker';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import useProductByEmail from "../../hooks/useProductByEmail";
+import useShop from "../../hooks/useShop";
+
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -18,15 +20,18 @@ const AddProduct = () => {
     const today = new Date();
     const productAddingDate = today.toLocaleDateString('en-GB');
     // console.log("today",today)
-    const {data:shop=[]} = useQuery({
-    queryKey:[userr],
-    queryFn: async() =>{
-        const res = await axiosPublic.get(`/shop/${userr.email}`);
-    //    console.log(res.data);
-        return res.data;
-    }
-   })
+    const {data:shop=[],refetch} = useQuery({
+        queryKey:[userr],
+        queryFn: async() =>{
+            const res = await axiosPublic.get(`/shop/${userr?.email}`);
+            // console.log(res.data);
+            return res.data;
+        }
+        })
+    
 const navigate  = useNavigate();
+
+console.log(shop);
 
 
 
@@ -43,8 +48,8 @@ const navigate  = useNavigate();
         // console.log(res.data)
         if (res.data.success) {
             // console.log(data)
-            const sellingPrice= parseFloat(data.productionCost)+parseFloat((7.5*data.productionCost)/100)+parseFloat((data.profitMargin*data.productionCost)/100);
-            const productSellingPrice = ((sellingPrice - ((sellingPrice*parseFloat(sellingPrice*data.discount)/100))),2).toFixed(2);
+            const sellingPrice= parseFloat(data.productionCost)+parseFloat((7.5*parseFloat(data.productionCost))/100)+parseFloat((parseFloat(data.profitMargin)*parseFloat(data.productionCost))/100);
+            const productSellingPrice = ((sellingPrice - ((sellingPrice*parseFloat(sellingPrice*parseFloat(data.discount))/100))),2).toFixed(2);
             const saleCount = 0;
             const addProduct = {
                 ProductName: data.ProductName,
@@ -62,7 +67,7 @@ const navigate  = useNavigate();
                 productAddingDate
 
             }
-            console.log("befor",shop.productLimit)
+            
             if(parseInt(shop.productLimit)<0)
             {
                 toast(`you have crossed your product limit.`);
@@ -75,7 +80,7 @@ const navigate  = useNavigate();
             .then(res=>{
                 if(res.data)
                 {
-                     const productLimit =parseInt(shop.productLimit)-product.length;
+                     const productLimit =(shop.productLimit)-(product.length);
                    const update = {
                     productLimit,
                     email:userr.email

@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoute";
 import Subsiption from "../pages/dashboard/Subsiption";
 import UpdateProduct from "../pages/dashboard/UpdateProduct";
 import CheckOut from "../pages/dashboard/CheckOut";
+import SaleSummary from "../pages/dashboard/SaleSummary";
 
 
 export const router =createBrowserRouter([
@@ -53,8 +54,12 @@ export const router =createBrowserRouter([
     children:[
       {
         //user only route
+        path:'/dashboard',
+        element:<ManageProduct></ManageProduct>
+      },
+      {
         path:'/dashboard/home',
-        element:<CreateStore></CreateStore>
+        element:<ManageProduct></ManageProduct>
       },
       {
         path:'/dashboard/menu',
@@ -89,6 +94,10 @@ export const router =createBrowserRouter([
       {
         path:'/dashboard/checkOut',
         element:<CheckOut></CheckOut>
+      },
+      {
+        path:'/dashboard/saleSummary',
+        element:<SaleSummary></SaleSummary>
       }
     ]
   }

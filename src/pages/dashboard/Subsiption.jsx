@@ -3,19 +3,21 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
+import useShop from "../../hooks/useShop";
+
 
 
 const Subsiption = () => {
     const axiosPublic = useAxiosPublic();
     const {userr} = useContext(AuthContext);
-    const {data:shop=[]} = useQuery({
+    const {data:shop=[],refetch} = useQuery({
         queryKey:[userr],
         queryFn: async() =>{
             const res = await axiosPublic.get(`/shop/${userr?.email}`);
-        //    console.log(res.data);
+            // console.log(res.data);
             return res.data;
         }
-       })
+        })
     //    console.log(shop)
     const handleTen = (limit, doller) =>{
 
@@ -42,25 +44,30 @@ const Subsiption = () => {
         })
 
         
-
-        // console.log("shop",shop.productLimit)
+   
+   
+        console.log("shop",shop.productLimit)
         const productLimit =parseInt(shop.productLimit)+limit+1;
                    const update = {
                     productLimit,
                     email:userr.email
                 }
-                    // console.log(update)
+                    console.log(update)
                      axiosPublic.put(`/shop`,update)
                     .then(res=>{
                         if(res.data)
                         toast(`Congratulations!! you product limit is extended to ${productLimit}.`)
                     })
+    
+       
 
 
 
 
 
     }
+
+    
 
 
     return (

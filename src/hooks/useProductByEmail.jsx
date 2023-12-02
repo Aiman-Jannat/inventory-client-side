@@ -12,7 +12,7 @@ const useProductByEmail = () => {
     queryKey:[id],
     queryFn: async() =>{
         const res = await axiosPublic.get(`/products/${userr?.email}`);
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
     }
    })

@@ -19,6 +19,8 @@ const SalesCollection = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const [shop, setShop] = useState([]);
+  const today = new Date();
+    const sellingDate = today.toLocaleDateString('en-GB');
   const { data } = useQuery({
     queryKey: [id],
     queryFn: async () => {
@@ -66,7 +68,8 @@ const SalesCollection = () => {
       productImage: item.productImage,
       productSellingPrice: item.productSellingPrice,
       saleCount: item.saleCount,
-      productId:item._id
+      productId:item._id,
+      sellingDate
 
 
     }
@@ -77,6 +80,13 @@ const SalesCollection = () => {
         refetch();
         // console.log(res.data)
         toast("you add this product to your check list.")
+      }})
+    axiosPublic.post('/checkout',data)
+    .then(res=>{
+      if(res.data){
+        refetch();
+        // console.log(res.data)
+        
       }
     })
     
@@ -115,7 +125,7 @@ const SalesCollection = () => {
         </div>
         <button onClick={hanldeChecOut} className="p-3 mx-auto bg-red-500 mt-4 text-white flex justify-center">Check Out({check.length})</button>
         {
-          shop.length == 0 ? <><img src="https://islamimart.com/media/products/noproduct.png" alt="" /></>
+          shop.length == 0 ? <><img className="w-28 mx-auto h-28 mt-10 flex justify-center items-center" src="https://islamimart.com/media/products/noproduct.png" alt="" /></>
             :
             <div>
 
