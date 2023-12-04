@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic"
 import {AuthContext} from '../../provider/AuthProvider'
+import { MdOutlineMailOutline } from "react-icons/md";
 
 const AllUser = () => {
   const {userr} = useContext(AuthContext);
@@ -22,10 +23,7 @@ const AllUser = () => {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
    
-    const  totalInvest = save.reduce((total,item) => total+parseFloat(item.productionCost),0)
-    const  totalSale = save.length;
-    const  product = save.reduce((total,item) => total+parseFloat(item.productSellingPrice),0);
-    let  banani = product-totalInvest;
+    
     
 
     
@@ -66,7 +64,7 @@ const AllUser = () => {
       <td>{item.name}</td>
       <td>{item.role}</td>
       {
-        save.role=="user"&& <td><button  className="btn bg-white border-none  "><MdOutlineMailOutline  className="text-orange-500 text-4xl"></MdOutlineMailOutline > </button></td>
+        item.role=="user"&& <td><button  className="btn bg-white border-none  "><MdOutlineMailOutline  className="text-orange-500 text-4xl"></MdOutlineMailOutline > </button></td>
       }
       
       

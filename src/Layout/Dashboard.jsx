@@ -59,11 +59,7 @@ const Dashboard = () => {
                         <NavLink className={({ isActive}) =>
  isActive ? "text-white text-md underline "  : ""} to="/dashboard/adminSaleSummary">Sales Summary</NavLink>
                     </li>
-                    <li className=" flex gap-3 mt-5 hover:text-white  items-center font-bold uppercase">
-                        <FaDatabase></FaDatabase>
-                        <NavLink className={({ isActive}) =>
- isActive ? "text-white text-md underline "  : ""} to="/dashboard/manageBookings">Manage Bookings</NavLink>
-                    </li>
+                  
                     <li className=" flex gap-3 my-5 items-center  hover:text-white  font-bold uppercase">
                         <FaUser></FaUser>
                         <NavLink className={({ isActive}) =>

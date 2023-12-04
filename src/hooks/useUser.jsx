@@ -9,7 +9,7 @@ const useUser = () => {
     const {data:user,isLoading} = useQuery({
     queryKey:[userr],
     queryFn: async() =>{
-        const res = await axiosPublic.get(`/users/${userr.email}`);
+        const res = await axiosPublic.get(`/users/${userr?.email}`);
     //    console.log(res.data);
         return res.data;
     }

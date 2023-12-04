@@ -9,8 +9,9 @@ const Navbar = () => {
 
   const [user] = useUser(); 
   const [isAdmin] = useAdmin();
-  console.log(user?.role)
+  console.log(user)
     const {userr,logout} = useContext(AuthContext);
+    console.log("userrr",userr)
     return (
         <div>
             <div className=" pb-2 ...">
@@ -69,7 +70,7 @@ isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : "
  isActive ? "text-white text-md underline  px-5 py-2  bg-blue-800" : ""
 } >Home</NavLink>
      {
- user?.role != "user"?<><NavLink to = '/dashboard' className={({ isActive}) =>   
+ user?.role == "admin"||user?.role=="manager"?<><NavLink to = '/dashboard' className={({ isActive}) =>   
  isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : ""
 } >Dashboard</NavLink></>:<><NavLink to = '/createStore' className={({ isActive}) =>   
 isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : ""
