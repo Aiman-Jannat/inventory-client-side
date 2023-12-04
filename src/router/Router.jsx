@@ -18,9 +18,15 @@ import Subsiption from "../pages/dashboard/Subsiption";
 import UpdateProduct from "../pages/dashboard/UpdateProduct";
 import CheckOut from "../pages/dashboard/CheckOut";
 import SaleSummary from "../pages/dashboard/SaleSummary";
+import AdminManageShop from "../pages/dashboard/AdminManageShop";
+import AdminSaleSummary from "../pages/dashboard/AdminSaleSummary";
+import AdminHome from "../pages/dashboard/AdminHome";
+import AllUser from "../pages/dashboard/AllUser";
+
 
 
 export const router =createBrowserRouter([
+  
 
 {
     path:'/',
@@ -56,10 +62,23 @@ export const router =createBrowserRouter([
         //user only route
         path:'/dashboard',
         element:<ManageProduct></ManageProduct>
-      },
+        },
       {
         path:'/dashboard/home',
         element:<ManageProduct></ManageProduct>
+      },
+      {
+        path:'/dashboard/allUser',
+        element:<AllUser></AllUser>
+
+      },
+      {
+        path:'/dashboard/adminManageShop',
+        element:<AdminManageShop></AdminManageShop>
+      },
+      {
+        path:'/dashboard/adminSaleSummary',
+        element:<AdminSaleSummary></AdminSaleSummary>
       },
       {
         path:'/dashboard/menu',
@@ -68,6 +87,10 @@ export const router =createBrowserRouter([
       {
         path:'/dashboard/subscription',
         element:<Subsiption></Subsiption>
+      },
+      {
+        path:'/dashboard/adminhome',
+        element:<ManageProduct></ManageProduct>
       },
     //   //admin only route
     //   {

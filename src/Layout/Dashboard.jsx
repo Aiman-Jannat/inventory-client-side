@@ -5,8 +5,10 @@ import { AuthContext } from "../provider/AuthProvider";
 import Footer from "../pages/home/footer/Footer";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
+    const [isAdmin] = useAdmin();
     const {userr, logout} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogout = () =>{
@@ -30,37 +32,42 @@ const Dashboard = () => {
 
 
 
-    const isAdmin=false;
+    
     return (
         <div>
             <div className="flex">
             <div className="w-3/12 min-h-screen bg-blue-900 -ms-10 max-h-min">
             
-                <div className="flex flex-col  w-9/12 mx-auto justify-start mt-10 text-black ">
+                <div className="flex flex-col  w-9/12 mx-auto justify-start mt-8 text-black ">
                 <ul className="">
                     {
                         isAdmin ? 
                         <>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHpvbd2VDxNESQSKOx0FhTBzRlO5YGK_XQlA&usqp=CAU" alt="" />
-                        <li className=" flex hover:text-white gap-3 items-center font-bold uppercase">
+                        <li className=" flex hover:text-white gap-3 items-center mt-10 font-bold uppercase">
                         <FaHouse></FaHouse>
-                        <NavLink to="/dashboard/adminHome">Admin Home</NavLink>
+                        <NavLink className={({ isActive}) =>
+ isActive ? "text-white text-md underline "  : ""} to="/dashboard/adminHome">Admin Home</NavLink>
                     </li>
                     <li className=" flex hover:text-white  gap-3 items-center font-bold mt-5 uppercase">
-                        <FaUtensils></FaUtensils>
-                        <NavLink to="/dashboard/addItems">Add Items</NavLink>
+                        <FaShop></FaShop>
+                        <NavLink className={({ isActive}) =>
+ isActive ? "text-white text-md underline "  : ""} to="/dashboard/adminManageShop"> Manage Shop </NavLink>
                     </li>
                     <li className=" flex gap-3 mt-5 hover:text-white  items-center font-bold uppercase">
                         <FaList></FaList>
-                        <NavLink to="/dashboard/manageItems">Manage Items</NavLink>
+                        <NavLink className={({ isActive}) =>
+ isActive ? "text-white text-md underline "  : ""} to="/dashboard/adminSaleSummary">Sales Summary</NavLink>
                     </li>
                     <li className=" flex gap-3 mt-5 hover:text-white  items-center font-bold uppercase">
                         <FaDatabase></FaDatabase>
-                        <NavLink to="/dashboard/manageBookings">Manage Bookings</NavLink>
+                        <NavLink className={({ isActive}) =>
+ isActive ? "text-white text-md underline "  : ""} to="/dashboard/manageBookings">Manage Bookings</NavLink>
                     </li>
                     <li className=" flex gap-3 my-5 items-center  hover:text-white  font-bold uppercase">
                         <FaUser></FaUser>
-                        <NavLink to="/dashboard/allUsers">All Users</NavLink>
+                        <NavLink className={({ isActive}) =>
+ isActive ? "text-white text-md underline "  : ""} to="/dashboard/allUser">All Users</NavLink>
                     </li>
                         </>
                         :
@@ -104,10 +111,11 @@ const Dashboard = () => {
                         <FaHouse></FaHouse>
                         <NavLink to="/">Home</NavLink>
                     </li>
-                    <li className=" flex gap-3 hover:text-white  items-center font-bold mt-5 uppercase">
+                  { !isAdmin && <li className=" flex gap-3 hover:text-white  items-center font-bold mt-5 uppercase">
                         <FaMessage></FaMessage>
                         <NavLink >Notice</NavLink>
                     </li>
+                }
                     <li className=" flex hover:text-white  gap-3 items-center  font-bold mt-5 uppercase">
                   
                         <button className="flex hover:text-white items-center  gap-3 font-bold  uppercase" onClick={handleLogout}><FaRightFromBracket className="flex"></FaRightFromBracket> LogOut</button>

@@ -2,7 +2,7 @@
 
 const Title = ({ mainTitle, subTitle }) => {
     return (
-        <div className="text-center my-3 pb-3 relative">
+        <div className="text-center my-10 pb-3 relative">
       <p className=" text-lg text-gray-600 mb-3">........<span className="text-blue-900 font-bold">{subTitle}</span>........</p>
       <h2 className="text-4xl font-extrabold text-gray-900 relative inline-block">
         <span className="relative  border-4 rounded-md border-b-0  border-orange-600 px-4">{mainTitle}</span>

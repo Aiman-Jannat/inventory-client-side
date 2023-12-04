@@ -69,19 +69,28 @@ const SalesCollection = () => {
       productSellingPrice: item.productSellingPrice,
       saleCount: item.saleCount,
       productId:item._id,
-      sellingDate
+      sellingDate,
+      ownerEmail:userr.email
 
 
     }
 
-    axiosPublic.post('/check',data)
+    axiosPublic.post('/checkout',data)
+    .then(res=>{
+      if(res.data){
+        refetch();
+        console.log(res.data)
+        // toast("you add this product to your check list.")
+      }})
+    axiosPublic.post('/checkout',data)
     .then(res=>{
       if(res.data){
         refetch();
         // console.log(res.data)
-        toast("you add this product to your check list.")
-      }})
-    axiosPublic.post('/checkout',data)
+        
+      }
+    })
+    axiosPublic.post('/saveCheckOut',data)
     .then(res=>{
       if(res.data){
         refetch();

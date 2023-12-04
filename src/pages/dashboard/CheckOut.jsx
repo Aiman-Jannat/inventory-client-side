@@ -19,7 +19,7 @@ const CheckOut = () => {
     const hanldePaid =  () =>{
         toast("you have paid for all these products");
         
-        axiosPublic.delete('/check')
+        axiosPublic.delete('/checkout')
         .then(res=>{
             if(res.deletedCount)
             {

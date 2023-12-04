@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import useUser from "../../hooks/useUser";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Navbar = () => {
 
   const [user] = useUser(); 
-  // console.log(user)
+  const [isAdmin] = useAdmin();
+  console.log(user?.role)
     const {userr,logout} = useContext(AuthContext);
     return (
         <div>
@@ -27,7 +29,7 @@ const Navbar = () => {
 } >Home</NavLink>
 
 {
- user?.role === "manager"?<><NavLink to = '/dashboard' className={({ isActive}) =>   
+ user?.role != "user"?<><NavLink to = '/dashboard' className={({ isActive}) =>   
  isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : ""
 } >Dashboard</NavLink></>:<><NavLink to = '/createStore' className={({ isActive}) =>   
 isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : ""
@@ -67,7 +69,7 @@ isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : "
  isActive ? "text-white text-md underline  px-5 py-2  bg-blue-800" : ""
 } >Home</NavLink>
      {
- user?.role === "manager"?<><NavLink to = '/dashboard' className={({ isActive}) =>   
+ user?.role != "user"?<><NavLink to = '/dashboard' className={({ isActive}) =>   
  isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : ""
 } >Dashboard</NavLink></>:<><NavLink to = '/createStore' className={({ isActive}) =>   
 isActive ? "text-white text-md underline  px-5 py-2 rounded-md bg-blue-800"  : ""
