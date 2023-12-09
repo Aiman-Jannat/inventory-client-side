@@ -1,8 +1,28 @@
-# React + Vite
+# Inventory Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live link: https://lighthearted-horse-7f01ad.netlify.app/
 
-Currently, two official plugins are available:
+Short Description of this project:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- There are 3 role in this project.
+  --Admin
+  --User
+  --Manager
+- ##Admin:
+- Admin can add shop and also manage shops.
+- Shop holder's will pay for using this website.
+- The amouont will be added as admin's income on the database.
+- Admin can summerize full income and all user's respose.
+
+- ##Manager:
+- A manager have to logged in to create a shop.
+- After creating a shop manager will redirect to the dashboard where he or she can manipulate products.
+- Manager can see all product of his own shop and also summerize the sell.
+
+- ##User:
+
+- User's have to logged in first.
+- User cannot go for any route without creating any shop.
+
+  
+  
