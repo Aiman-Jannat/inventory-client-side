@@ -25,7 +25,7 @@ Short Description of this project:
 - User's have to logged in first.
 - User cannot go for any route without creating any shop.
 
-  ## Technologies that is have been used in this project
+## Technologies that is have been used in this project
 
 ### Athentication
   
@@ -39,8 +39,8 @@ Short Description of this project:
  
 ### Back-end part
 
- -For database purpose MongoDB is used here.
- -Express.js, node.js 
+ - For database purpose MongoDB is used here.
+ - Express.js, node.js 
   
 
   
