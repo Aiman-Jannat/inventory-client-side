@@ -27,20 +27,20 @@ Short Description of this project:
 
   ## Technologies that is have been used in this project
 
-  ### Athentication
+### Athentication
   
-  - Firebase email password authentication is used for user login.
-  - 
-  ### Front-end part
+- Firebase email password authentication is used for user login.
 
-  - Front end part is developed by using react.js and javascript.
-  - Tailwind css is used for css framework.
-  - Daisy UI is used for component library.
+### Front-end part
+
+ - Front end part is developed by using react.js and javascript.
+ - Tailwind css is used for css framework.
+ - Daisy UI is used for component library.
  
-  ### Back-end part
+### Back-end part
 
-  -For database purpose MongoDB is used here.
-  -Express.js, node.js 
+ -For database purpose MongoDB is used here.
+ -Express.js, node.js 
   
 
   
